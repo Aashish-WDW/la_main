@@ -1,48 +1,18 @@
 import React, { useRef } from 'react';
 import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
 
-// Dummy review type
-interface Review {
-  userId: string;
+type Review = {
+  id: number;
+  name: string;
   rating: number;
   comment: string;
-  createdAt: string;
+};
+
+interface ReviewSectionProps {
+  reviews: Review[];
 }
 
-const dummyReviews: Review[] = [
-  {
-    userId: 'user1',
-    rating: 4.8,
-    comment: 'Amazing place! Would definitely come again.',
-    createdAt: '2024-12-10',
-  },
-  {
-    userId: 'user2',
-    rating: 5.0,
-    comment: 'Very clean and comfortable. Host was super friendly!',
-    createdAt: '2025-01-15',
-  },
-  {
-    userId: 'user3',
-    rating: 4.6,
-    comment: 'Nice location and well maintained. Recommended!',
-    createdAt: '2025-02-01',
-  },
-  {
-    userId: 'user4',
-    rating: 4.2,
-    comment: 'Great experience overall but the wifi was a bit slow.',
-    createdAt: '2025-03-20',
-  },
-  {
-    userId: 'user5',
-    rating: 5.0,
-    comment: '10/10 stay. The views were stunning!',
-    createdAt: '2025-04-02',
-  },
-];
-
-const ReviewSection: React.FC = () => {
+const ReviewSection: React.FC<ReviewSectionProps> = ({ reviews }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scroll = (dir: 'left' | 'right') => {
@@ -53,13 +23,6 @@ const ReviewSection: React.FC = () => {
         behavior: 'smooth',
       });
     }
-  };
-
-  const getUserDetails = (userId: string) => {
-    return {
-      name: 'Guest User',
-      avatar: '/hero.jpg',
-    };
   };
 
   return (
@@ -79,26 +42,21 @@ const ReviewSection: React.FC = () => {
           ref={scrollRef}
           className="flex gap-4 overflow-x-auto no-scrollbar pb-2 snap-x snap-mandatory"
         >
-          {dummyReviews.map((review, index) => {
-            const user = getUserDetails(review.userId);
+          {reviews.map((review) => {
             return (
               <div
-                key={index}
+                key={review.id}
                 className="min-w-[85vw] max-w-xs bg-white shadow-sm border border-gray-200 rounded-xl p-5 hover:shadow-md transition snap-center"
               >
                 <div className="flex items-center mb-4">
-                  <img
-                    src={user.avatar}
-                    alt={user.name}
-                    className="w-12 h-12 rounded-full object-cover mr-4"
-                  />
                   <div>
-                    <div className="font-medium">{user.name}</div>
+                    <div className="font-medium">{review.name}</div>
                     <div className="text-gray-500 text-sm">
-                      {new Date(review.createdAt).toLocaleDateString('en-US', {
+                      {/* Date is not available in the new review type, so this is commented out */}
+                      {/* {new Date(review.createdAt).toLocaleDateString('en-US', {
                         month: 'long',
                         year: 'numeric',
-                      })}
+                      })} */}
                     </div>
                   </div>
                 </div>
@@ -122,26 +80,21 @@ const ReviewSection: React.FC = () => {
 
       {/* Desktop View */}
       <div className="hidden md:grid md:grid-cols-2 gap-6">
-        {dummyReviews.map((review, index) => {
-          const user = getUserDetails(review.userId);
+        {reviews.map((review) => {
           return (
             <div
-              key={index}
+              key={review.id}
               className="bg-white shadow-sm border border-gray-200 rounded-xl p-5 hover:shadow-md transition"
             >
               <div className="flex items-center mb-4">
-                <img
-                  src={user.avatar}
-                  alt={user.name}
-                  className="w-12 h-12 rounded-full object-cover mr-4"
-                />
                 <div>
-                  <div className="font-medium">{user.name}</div>
+                  <div className="font-medium">{review.name}</div>
                   <div className="text-gray-500 text-sm">
-                    {new Date(review.createdAt).toLocaleDateString('en-US', {
+                    {/* Date is not available in the new review type, so this is commented out */}
+                    {/* {new Date(review.createdAt).toLocaleDateString('en-US', {
                       month: 'long',
                       year: 'numeric',
-                    })}
+                    })} */}
                   </div>
                 </div>
               </div>
