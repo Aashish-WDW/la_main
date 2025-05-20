@@ -1,7 +1,7 @@
 import React from 'react'
 import { Camera, Upload, Check } from 'lucide-react';
 
-function page() {
+function lookaroundpage() {
   return (
 
     <div className='bg-gradient-to-b from-gray-50 to-white mt-16'>
@@ -112,4 +112,4 @@ function page() {
   )
 }
 
-export default page
+export default lookaroundpage
