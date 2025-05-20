@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "LookAround360 - Find Your Perfect Stay",
+  title: "lookaround - Find Your Perfect Stay",
   description: "Discover and book unique accommodations around the world",
 };
 
@@ -21,6 +21,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.className} min-h-screen flex flex-col bg-gray-50`}>
+        <div className="bg-yellow-100 text-yellow-800 text-center text-sm py-2 px-4">
+          ⚠️ This application is still under development. Please do not use it for anything important.
+        </div>
         <NavbarWrapper />
         <main className="flex-1 w-full overflow-x-hidden">
           {children}
