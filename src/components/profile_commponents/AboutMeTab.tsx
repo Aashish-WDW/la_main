@@ -7,7 +7,7 @@ import {
   PawPrint, MapPin, Timer, Lightbulb, Pencil, Save,
 } from 'lucide-react';
 
-const iconMap: Record<string, JSX.Element> = {
+const iconMap: Record<string, React.ReactElement> = {
   'My work': <Briefcase className="w-5 h-5 text-gray-500" />,
   'My favourite song in secondary school': <Music className="w-5 h-5 text-gray-500" />,
   'Decade I was born': <Timer className="w-5 h-5 text-gray-500" />,
