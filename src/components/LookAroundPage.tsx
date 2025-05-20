@@ -3,11 +3,11 @@ import React from 'react';
 import { Camera, Upload, Check } from 'lucide-react';
 
 interface LookAroundPageProps {
-  onLoginClick: () => void;
-  onSignupClick: () => void;
-  onProfileClick: () => void;
-  onLogoClick: () => void;
-  onLookAroundClick: () => void;
+  onLoginClick?: () => void;
+  onSignupClick?: () => void;
+  onProfileClick?: () => void;
+  onLogoClick?: () => void;
+  onLookAroundClick?: () => void;
   isAuthenticated?: boolean;
 }
 
