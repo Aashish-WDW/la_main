@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { Suspense, useState, useEffect } from 'react';
 import { Camera, Mail, Phone, MapPin, Edit2, Settings, Bell, Lock, CreditCard, HelpCircle, LogOut, User, Heart, Clock, Star, Calendar, Building2, AlertCircle, Home, Plus } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -21,7 +21,7 @@ interface Property {
     blockedDates?: { startDate: Date; endDate: Date }[];
 }
 
-export default function ProfilePage() {
+function ProfilePageContent() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const activeTab = searchParams.get('tab') || 'profile';
@@ -882,5 +882,14 @@ export default function ProfilePage() {
                 ]}
             />
         </div>
+    );
+}
+
+// Wrap in Suspense for export
+export default function ProfilePage() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <ProfilePageContent />
+        </Suspense>
     );
 }
