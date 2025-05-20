@@ -82,7 +82,9 @@ export default function HostProfile() {
           <div className="space-y-4">
             {Object.entries(hostData).map(([label, value]) => (
               <div key={label} className="flex items-start space-x-3">
-                <div className="pt-1">{iconMap[label]}</div>
+                <div className="pt-1">
+                  {iconMap[label as keyof typeof iconMap] ?? <Lightbulb className="w-5 h-5 text-gray-500" />}
+                </div>
                 <div>
                   <p className="text-sm font-medium text-gray-700">{label}</p>
                   <p className="text-sm text-gray-500">{value}</p>
