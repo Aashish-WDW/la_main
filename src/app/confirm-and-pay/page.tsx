@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { Suspense, useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import {
   CheckCircle,
@@ -721,4 +721,14 @@ const BookingConfirmationPage: React.FC = () => {
   );
 };
 
-export default BookingConfirmationPage;
+function BookingConfirmationPageWrapper() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <BookingConfirmationPage />
+    </Suspense>
+  );
+}
+
+export default BookingConfirmationPageWrapper;
+
+// Move your BookingConfirmationPage component below, and export only the wrapper above
