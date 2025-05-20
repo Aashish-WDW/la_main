@@ -66,7 +66,7 @@ export default function BlockDatesModal({ isOpen, onClose, onSave, existingBlock
                                 selectsEnd
                                 startDate={startDate}
                                 endDate={endDate}
-                                minDate={startDate}
+                                minDate={startDate ?? undefined}
                                 className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#00aeef] focus:border-transparent"
                                 placeholderText="Select end date"
                             />
@@ -116,4 +116,4 @@ export default function BlockDatesModal({ isOpen, onClose, onSave, existingBlock
             </div>
         </div>
     );
-} 
+}
